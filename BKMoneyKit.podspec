@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "BKMoneyKit"
-  s.version      = "0.0.5"
-  s.summary      = "iOS UI controls and formatters for entering money, credit card number and expiry date."
+  s.name         = "LFCreditCardHelper"
+  s.version      = "1.0.0"
+  s.summary      = "From BKMoneyKit. iOS UI controls and formatters for entering money, credit card number and expiry date."
 
 #   s.description  = <<-DESC
 #                    A longer description of BKMoneyKit in Markdown format.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 #                    * Finally, don't worry about the indent, CocoaPods strips it!
 #                    DESC
 
-  s.homepage     = "https://github.com/bkook/BKMoneyKit"
+  s.homepage     = "https://github.com/superarts/LFCreditCardHelper"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -52,8 +52,8 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
   
-  s.author             = "Byungkook Jang"
-  s.social_media_url   = "http://twitter.com/bkook"  
+  s.author             = "Leo L, Byungkook Jang"
+  s.social_media_url   = "http://www.superarts.org"  
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

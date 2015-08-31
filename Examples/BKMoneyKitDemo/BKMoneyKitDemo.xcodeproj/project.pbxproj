@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B35D6CB61B9419440089518B /* icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B35D6CB51B9419440089518B /* icons.ttf */; };
 		DF68E2D919CDE25D00EF5554 /* BKCardNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF68E2D819CDE25D00EF5554 /* BKCardNumberLabel.m */; };
 		DFB3629A19A8F65F001E640D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB3629919A8F65F001E640D /* Foundation.framework */; };
 		DFB3629C19A8F65F001E640D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB3629B19A8F65F001E640D /* CoreGraphics.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B35D6CB41B94115D0089518B /* LFCreditCardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCreditCardHelper.h; sourceTree = "<group>"; };
+		B35D6CB51B9419440089518B /* icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icons.ttf; sourceTree = "<group>"; };
 		DF68E2D719CDE25D00EF5554 /* BKCardNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCardNumberLabel.h; sourceTree = "<group>"; };
 		DF68E2D819CDE25D00EF5554 /* BKCardNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCardNumberLabel.m; sourceTree = "<group>"; };
 		DFB3629619A8F65F001E640D /* BKMoneyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKMoneyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +151,7 @@
 		DFB3629F19A8F65F001E640D /* BKMoneyKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B35D6CB51B9419440089518B /* icons.ttf */,
 				DFB362A819A8F65F001E640D /* BKAppDelegate.h */,
 				DFB362A919A8F65F001E640D /* BKAppDelegate.m */,
 				DFB362C919A8F6BF001E640D /* BKViewController.h */,
@@ -235,6 +239,7 @@
 		DFB362EA19A8FCD2001E640D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B35D6CB41B94115D0089518B /* LFCreditCardHelper.h */,
 				DFB362EB19A8FCDF001E640D /* BKMoneyUtils.h */,
 				DFB362EC19A8FCDF001E640D /* BKMoneyUtils.m */,
 				DFB362EE19A8FE76001E640D /* BKForwardingTextField.h */,
@@ -322,6 +327,7 @@
 			files = (
 				DFB362CD19A8F6BF001E640D /* BKViewController.xib in Resources */,
 				DFB362A419A8F65F001E640D /* InfoPlist.strings in Resources */,
+				B35D6CB61B9419440089518B /* icons.ttf in Resources */,
 				DFB362D919A8F6FB001E640D /* BKMoneyKit.bundle in Resources */,
 				DFB362AC19A8F65F001E640D /* Images.xcassets in Resources */,
 			);

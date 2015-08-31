@@ -7,13 +7,14 @@
 //
 
 #import "BKCardNumberField.h"
-#import "BKMoneyUtils.h"
+#import "LFCreditCardHelper.h"
 
 @interface BKCardNumberField ()
 
-@property (nonatomic, strong) BKCardNumberFormatter     *cardNumberFormatter;
-@property (nonatomic, strong) UIImageView               *cardLogoImageView;
-@property (nonatomic, strong) NSCharacterSet            *numberCharacterSet;
+@property (nonatomic, strong) BKCardNumberFormatter	*cardNumberFormatter;
+@property (nonatomic, strong) UIImageView			*cardLogoImageView;
+@property (nonatomic, strong) UILabel				*cardLogoLabel;
+@property (nonatomic, strong) NSCharacterSet		*numberCharacterSet;
 
 @end
 
@@ -24,7 +25,16 @@
 - (void)commonInit
 {
     [super commonInit];
-    
+
+	self.logoLabels = @{
+		LFCreditCardCompanyNone:			@"1.",
+		LFCreditCardCompanyVisa:			@"2.",
+		LFCreditCardCompanyMasterCard:		@"3.",
+		LFCreditCardCompanyAmericanExpress:	@"4.",
+	};
+	self.logoWidth = 44;
+	self.logoFont = [UIFont fontWithName:@"airservice-icons" size:18];
+
     _cardNumberFormatter = [[BKCardNumberFormatter alloc] init];
     
     _numberCharacterSet = [BKMoneyUtils numberCharacterSet];
@@ -96,6 +106,7 @@
 - (void)textFieldEditingChanged:(id)sender
 {
     [self updateCardLogoImage];
+    [self updateCardLogoLabel];
 }
 
 #pragma mark - Private Methods
@@ -111,6 +122,23 @@
     UIImage *cardLogoImage = [BKMoneyUtils cardLogoImageWithShortName:patternInfo.shortName];
     
     self.cardLogoImageView.image = cardLogoImage;
+	NSLog(@"updated logo image: %@", patternInfo.shortName);
+}
+
+- (void)updateCardLogoLabel
+{
+    if (nil == self.cardLogoLabel) {
+        return;
+    }
+    
+    NSString* name = self.cardNumberFormatter.cardPatternInfo.shortName;
+	if (!name) name = @"none";
+   
+	NSLog(@"updated logo label: %@, %@", name, LFCreditCardCompanyDinersClub);
+	name = self.logoLabels[name];
+	if (!name) name = self.logoLabels[LFCreditCardCompanyDefault];
+
+    self.cardLogoLabel.text = name;
 }
 
 #pragma mark - Public Methods
@@ -141,10 +169,38 @@
     }
 }
 
+- (void)setShowsLogoLabel:(BOOL)showsLogoLabel
+{
+    if (_showsLogoLabel != showsLogoLabel) {
+        _showsLogoLabel = showsLogoLabel;
+        
+        if (showsLogoLabel) {
+            
+            CGFloat size = CGRectGetHeight(self.frame);
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.logoWidth, size)];
+            label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+            label.contentMode = UIViewContentModeCenter;
+			label.font = self.logoFont;
+            
+            self.leftView = label;
+            self.leftViewMode = UITextFieldViewModeAlways;
+            
+            self.cardLogoLabel = label;
+            
+            [self updateCardLogoLabel];
+            
+        } else {
+            self.leftView = nil;
+        }
+    }
+}
+
 - (void)setCardNumber:(NSString *)cardNumber
 {
     self.text = [self.cardNumberFormatter formattedStringFromRawString:cardNumber];
     [self updateCardLogoImage];
+    [self updateCardLogoLabel];
 }
 
 - (NSString *)cardNumber

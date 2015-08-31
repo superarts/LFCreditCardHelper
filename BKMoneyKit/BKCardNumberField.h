@@ -17,6 +17,15 @@
 @property (nonatomic) BOOL showsCardLogo;
 
 /**
+ * A Boolean indicating whether shows card logo left side or not, using text or font icon.
+ */
+@property (nonatomic) BOOL showsLogoLabel;
+
+@property (nonatomic) CGFloat				logoWidth;
+@property (nonatomic, strong) UIFont*		logoFont;
+@property (nonatomic, strong) NSDictionary*	logoLabels;
+
+/**
  * The card number without blank space. (e.g., 1234123412341234)
  * Use this property to set or get card number instead of text property.
  */

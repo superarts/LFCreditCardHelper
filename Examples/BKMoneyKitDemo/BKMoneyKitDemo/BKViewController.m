@@ -7,6 +7,7 @@
 //
 
 #import "BKViewController.h"
+#import <CoreText/CoreText.h>
 
 @interface BKViewController ()
 
@@ -19,6 +20,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		NSURL* url = [[NSBundle mainBundle] URLForResource:@"icons" withExtension:@"ttf"];
+		NSAssert([[NSFileManager defaultManager] fileExistsAtPath:[url path]], @"Font file doesn't exist");
+		CGDataProviderRef fontDataProvider = CGDataProviderCreateWithURL((__bridge CFURLRef)url);
+		CGFontRef newFont = CGFontCreateWithDataProvider(fontDataProvider);
+		CGDataProviderRelease(fontDataProvider);
+		CFErrorRef error;
+		CTFontManagerRegisterGraphicsFont(newFont, &error);
+		CGFontRelease(newFont);
     }
     return self;
 }
@@ -27,8 +36,17 @@
 {
     [super viewDidLoad];
 
-    self.cardNumberField.showsCardLogo = YES;
-    
+    //self.cardNumberField.showsCardLogo = YES;
+	self.cardNumberField.logoLabels	= @{
+        LFCreditCardCompanyNone:			@"",
+        LFCreditCardCompanyVisa:			@"",
+        LFCreditCardCompanyMasterCard:		@"",
+        LFCreditCardCompanyAmericanExpress:	@"",
+    };
+	self.cardNumberField.logoWidth = 32;
+    self.cardNumberField.showsLogoLabel = YES;
+    self.cardNumberField.logoFont = [UIFont fontWithName:@"airservice-icons" size:26];
+	
 //    self.currencyTextField.numberFormatter.currencySymbol = @"";
 //    self.currencyTextField.numberFormatter.currencyCode = @"KRW";
     
