@@ -1,5 +1,7 @@
-BKMoneyKit
+LFCreditCardHelper
 ==========
+
+From [BKMoneyKit](https://github.com/bkook/BKMoneyKit) with some modifications that are not likely to be taken be the author.
 
 iOS UI controls and formatters for entering money, credit card number and expiry date.
 
