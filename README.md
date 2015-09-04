@@ -1,7 +1,25 @@
 LFCreditCardHelper
 ==========
 
-From [BKMoneyKit](https://github.com/bkook/BKMoneyKit) with some modifications that are not likely to be taken be the author.
+From [BKMoneyKit](https://github.com/bkook/BKMoneyKit) with some modifications that are not likely to be taken be the author, for example [icon font](http://www.superarts.org/LSwift/lswift/lthememanager/ibinspectable/font/icon/2015/05/08/using-icon-font-with-lthememanager.html) support.
+
+Example:
+
+```objc
+	self.cardNumberField.logoLabels	= @{
+        LFCreditCardCompanyNone:			@"",
+        LFCreditCardCompanyVisa:			@"",
+        LFCreditCardCompanyMasterCard:		@"",
+        LFCreditCardCompanyAmericanExpress:	@"",
+    };
+	self.cardNumberField.logoWidth = 32;
+	UILabel* label = [self.cardNumberField enableLogoLabel];
+    label.font = [UIFont fontWithName:@"font-icon" size:26];
+	label.textColor = [UIColor lightGrayColor];
+```
+
+BKMoneyKit
+---
 
 iOS UI controls and formatters for entering money, credit card number and expiry date.
 

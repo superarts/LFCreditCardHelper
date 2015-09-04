@@ -21,10 +21,6 @@
  */
 @property (nonatomic) BOOL showsLogoLabel;
 
-@property (nonatomic) CGFloat				logoWidth;
-@property (nonatomic, strong) UIFont*		logoFont;
-@property (nonatomic, strong) NSDictionary*	logoLabels;
-
 /**
  * The card number without blank space. (e.g., 1234123412341234)
  * Use this property to set or get card number instead of text property.
@@ -41,9 +37,14 @@
  */
 @property (nonatomic, strong, readonly) BKCardNumberFormatter *cardNumberFormatter;
 
-/**
- * The card number logo image view.
- */
-@property (nonatomic, strong, readonly) UIImageView *cardLogoImageView;
+@property (nonatomic) CGFloat					logoWidth;
+@property (nonatomic, strong) NSDictionary*		logoLabels;
+//@property (nonatomic, strong) UIFont*			logoFont;
+//@property (nonatomic, strong) UIColor*		logoColor;
+@property (nonatomic, strong) UIImageView*		logoImage;
+@property (nonatomic, strong) UILabel*			logoLabel;
+
+- (UILabel*)enableLogoLabel;
+- (UIImageView*)enableLogoImage;
 
 @end

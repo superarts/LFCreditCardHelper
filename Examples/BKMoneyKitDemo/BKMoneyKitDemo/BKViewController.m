@@ -44,8 +44,9 @@
         LFCreditCardCompanyAmericanExpress:	@"",
     };
 	self.cardNumberField.logoWidth = 32;
-    self.cardNumberField.showsLogoLabel = YES;
-    self.cardNumberField.logoFont = [UIFont fontWithName:@"airservice-icons" size:26];
+	UILabel* label = [self.cardNumberField enableLogoLabel];
+    label.font = [UIFont fontWithName:@"airservice-icons" size:26];
+	label.textColor = [UIColor lightGrayColor];
 	
 //    self.currencyTextField.numberFormatter.currencySymbol = @"";
 //    self.currencyTextField.numberFormatter.currencyCode = @"KRW";

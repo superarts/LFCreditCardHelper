@@ -12,8 +12,6 @@
 @interface BKCardNumberField ()
 
 @property (nonatomic, strong) BKCardNumberFormatter	*cardNumberFormatter;
-@property (nonatomic, strong) UIImageView			*cardLogoImageView;
-@property (nonatomic, strong) UILabel				*cardLogoLabel;
 @property (nonatomic, strong) NSCharacterSet		*numberCharacterSet;
 
 @end
@@ -32,8 +30,9 @@
 		LFCreditCardCompanyMasterCard:		@"3.",
 		LFCreditCardCompanyAmericanExpress:	@"4.",
 	};
-	self.logoWidth = 44;
-	self.logoFont = [UIFont fontWithName:@"airservice-icons" size:18];
+	self.logoWidth	= 44;
+	//self.logoFont	= [UIFont fontWithName:@"airservice-icons" size:18];
+	//self.logoColor	= [UIColor darkGrayColor];
 
     _cardNumberFormatter = [[BKCardNumberFormatter alloc] init];
     
@@ -113,7 +112,7 @@
 
 - (void)updateCardLogoImage
 {
-    if (nil == self.cardLogoImageView) {
+    if (nil == self.logoImage) {
         return;
     }
     
@@ -121,13 +120,13 @@
     
     UIImage *cardLogoImage = [BKMoneyUtils cardLogoImageWithShortName:patternInfo.shortName];
     
-    self.cardLogoImageView.image = cardLogoImage;
+    self.logoImage.image = cardLogoImage;
 	NSLog(@"updated logo image: %@", patternInfo.shortName);
 }
 
 - (void)updateCardLogoLabel
 {
-    if (nil == self.cardLogoLabel) {
+    if (nil == self.logoLabel) {
         return;
     }
     
@@ -138,7 +137,7 @@
 	name = self.logoLabels[name];
 	if (!name) name = self.logoLabels[LFCreditCardCompanyDefault];
 
-    self.cardLogoLabel.text = name;
+    self.logoLabel.text = name;
 }
 
 #pragma mark - Public Methods
@@ -159,7 +158,7 @@
             self.leftView = imageView;
             self.leftViewMode = UITextFieldViewModeAlways;
             
-            self.cardLogoImageView = imageView;
+            self.logoImage = imageView;
             
             [self updateCardLogoImage];
             
@@ -181,12 +180,13 @@
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.logoWidth, size)];
             label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
             label.contentMode = UIViewContentModeCenter;
-			label.font = self.logoFont;
+			label.font = [UIFont fontWithName:@"airservice-icons" size:18];
+			label.textColor = [UIColor darkGrayColor];
             
             self.leftView = label;
             self.leftViewMode = UITextFieldViewModeAlways;
             
-            self.cardLogoLabel = label;
+            self.logoLabel = label;
             
             [self updateCardLogoLabel];
             
@@ -211,6 +211,18 @@
 - (NSString *)cardCompanyName
 {
     return self.cardNumberFormatter.cardPatternInfo.companyName;
+}
+
+- (UILabel*)enableLogoLabel
+{
+	self.showsLogoLabel = YES;
+	return self.logoLabel;
+}
+
+- (UIImageView*)enableLogoImage
+{
+	self.showsCardLogo = YES;
+	return self.logoImage;
 }
 
 @end
